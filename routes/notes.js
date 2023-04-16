@@ -8,7 +8,7 @@ const dbPath = path.join(__dirname, '../db/db.json'); // set path to db.json
 // GET route to get all notes
 router.get('/notes', (req, res) => {
   // GET route to get all notes
-  fs.readFile(dbPath, 'utf8', (err, data) => {
+  fs.readFile(dbPath, (err, data) => {
     // read db.json
     if (err) throw err; // throw error if error
     {
@@ -20,7 +20,7 @@ router.post('/notes', (req, res) => {
   // POST route to add a new note
   const { title, text } = req.body; // destructure title and text from request body
   const newNote = { title, text, id: uuid() }; // create new note object
-  fs.readFile(dbPath, 'utf8', (err, data) => {
+  fs.readFile(dbPath, (err, data) => {
     // read db.json
     if (err) throw err;
 
