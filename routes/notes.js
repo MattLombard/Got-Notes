@@ -26,12 +26,11 @@ router.post('/notes', (req, res) => {
 
     const notes = JSON.parse(data); // parse data
     notes.push(newNote); // push new note to notes array
-
+    console.log(notes);
     fs.writeFile(dbPath, JSON.stringify(notes), (err) => {
       // write new note to db.json
       if (err) throw err; // throw error if error
-      const response = res.json({ status: 'success', body: newNote }); // create response
-      res.json(response); // send response
+      res.json(newNote); // send response
     });
   });
 });
